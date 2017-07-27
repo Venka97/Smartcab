@@ -13536,7 +13536,7 @@ The percentage of bad decisions causing minor accidents is constant at about 0.0
 <p>3). <em>left</em> - It is important to know what is the intended direction of travel for the vehicle to the left of our agent. This is helpful to know as it'll help avoid accidents.</p>
 <p>4). <em>oncoming</em> - This feature is relevant to avoid accidents and improve safety.</p>
 <p><strong>Irrelevant features</strong></p>
-<p>1). <em>right</em> - This feature is irrelevant as the US traffic laws in all 50 states allows free right turn at red light. So it's not necessary to know the intended direction of travel for the vehicle to our right.</p>
+<p>1). <em>right</em> - According to the update function in the file environment.py the inputs['right'] feature is not used anywhere. Also the vehicle to the right of our agent will be on the adjacent lane. Hence this feature is irrelevant.</p>
 <p>2). <em>deadline</em> - If this feature is known to our agent then it might take the best decision based on the number of steps remaining. For eg. if based on the rewards, taking a bad action and reaching the destination allows the agent to reach the destination in the given number of steps and thus accumalate more rewards then it will take it. This might be helpful in some cases but it won't help in increasing the safety and reliability of the agent.</p>
 
 </div>
@@ -17702,12 +17702,12 @@ mZmZmZmZmTWEA1NmZmZmZmZmZtYQDkyZmZmZmZmZmVlD/H9rAaNvTcTboQAAAABJRU5ErkJggg==
 <p>The optimal policy for the smartcab in the given environment is to stop when there is a red light and move when the light is green.</p>
 <p>For eg. if the car is at the signal and the light is red and our detination is forward, the possible actions are {None. 'Forward', 'Right', 'Left'}. According to the optimal policy, the car would stationary when the light is red, go to right for the suboptimal policy (since taking right is allowed at red lights in the US) and going left or forward would be incorrect policy. When the light is green, the vehicle should not stay stationary. If it does then the policy is not optimal.</p>
 <p>From the file <code>'sim_improved-learning.txt'</code> the policy for the one of the states is</p>
-<p>('right', 'red', 'forward', 'left')
- -- forward : -34.38
- -- right : -17.60
- -- None : 1.44
- -- left : -33.29</p>
-<p>Which is not the optimal policy for this state. Since it is a red light and and going either forward or left will certainly lead to an accident, these to actions have the highest negative rewards. Going right is not illegal and it is the direction which leads to our destination so it should have the hisghest positive reward. This is an example of suboptimal policy follwed by our agent.</p>
+<p>('right', 'green', 'forward', 'right')
+-- forward : 1.43
+-- right : 0.00
+-- None : 0.00
+-- left : 0.0</p>
+<p>In this state the agent's destination is towards the right but it gets the highest reward for going forward and the reward for all the other states is zero. This is an example of suboptimal policy followed by the agent.</p>
 <p>This was possibly caused because aur agent never visited this state during training and could not learn the optimal policy for this state. Hence it failed to follow the optimal policy for this state.</p>
 <p>For the state</p>
 <p>('right', 'red', None, 'forward')
