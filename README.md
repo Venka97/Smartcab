@@ -7,4 +7,4 @@ Once the agent was successful at operating within the environment, I then  ident
 
 Finally, I improved upon the Q-Learning algorithm to find the best configuration of learning and exploration factors to ensure the self-driving agent is reaching its destinations with consistently positive results.
 
-##### This project is a part of Udacity's Machine Learning Engineer Nanodegree.
+#### This project is a part of Udacity's Machine Learning Engineer Nanodegree.
